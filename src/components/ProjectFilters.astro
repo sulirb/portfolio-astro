@@ -1,0 +1,38 @@
+---
+const { tags = [] }: { tags: string[] } = Astro.props;
+---
+<div class="surface" style="padding:.6rem; display:flex; gap:.5rem; flex-wrap:wrap; align-items:center;">
+  <input id="q" placeholder="Rechercher…" style="flex:1; min-width: 160px; padding:.6rem; background:var(--bg-elev); border:1px solid var(--border); border-radius:.6rem; color:var(--text)" />
+  <select id="tag" style="padding:.6rem; background:var(--bg-elev); border:1px solid var(--border); border-radius:.6rem; color:var(--text)">
+    <option value="">Tous les tags</option>
+    {tags.map(t => (<option value={t}>{t}</option>))}
+  </select>
+  <select id="sort" style="padding:.6rem; background:var(--bg-elev); border:1px solid var(--border); border-radius:.6rem; color:var(--text)">
+    <option value="title-asc">Titre A→Z</option>
+    <option value="title-desc">Titre Z→A</option>
+  </select>
+</div>
+
+<script is:inline>
+  const $ = (s) => document.querySelector(s);
+  const emitter = new EventTarget();
+  function emit() {
+    const detail = { q: $('#q')?.value?.toLowerCase() ?? '', tag: $('#tag')?.value ?? '', sort: $('#sort')?.value ?? 'title-asc' };
+    emitter.dispatchEvent(new CustomEvent('change', { detail }));
+  }
+  ['#q','#tag','#sort'].forEach(id => $(id)?.addEventListener('input', emit));
+  addEventListener('DOMContentLoaded', emit);
+  // expose
+  // @ts-ignore
+  window.projectFilters = emitter;
+  // palette commande: écouter Cmd/Ctrl+K pour focus recherche
+  addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      $('#q')?.focus();
+    }
+  });
+ </script>
+
+
+

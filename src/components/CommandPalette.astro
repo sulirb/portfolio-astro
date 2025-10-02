@@ -1,0 +1,53 @@
+<dialog id="cmdk" style="border:none; padding:0; background:transparent;">
+  <div class="surface" style="max-width:640px; margin: 10vh auto; padding:.6rem;">
+    <input id="cmdk-input" placeholder="Tapez une commande…" style="width:100%; padding:.8rem; background:var(--bg-elev); border:1px solid var(--border); border-radius:.6rem; color:var(--text)" />
+    <div id="cmdk-list" style="margin-top:.6rem; display:grid;">
+      <button data-action="home" class="btn">Aller à l’accueil</button>
+      <button data-action="projets" class="btn">Ouvrir projets</button>
+      <button data-action="apropos" class="btn">Ouvrir à propos</button>
+      <button data-action="contact" class="btn">Ouvrir contact</button>
+      <button data-action="theme" class="btn">Basculer thème</button>
+      <button data-action="email" class="btn">Copier email</button>
+    </div>
+  </div>
+</dialog>
+
+<script is:inline>
+  const dlg = document.getElementById('cmdk');
+  const input = document.getElementById('cmdk-input');
+  function openPalette() {
+    dlg?.showModal();
+    setTimeout(() => input?.focus(), 0);
+  }
+  function closePalette() { dlg?.close(); }
+  addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      openPalette();
+    }
+    if (e.key === 'Escape' && dlg?.open) closePalette();
+  });
+  document.getElementById('cmdk-list')?.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof HTMLElement)) return;
+    const action = target.getAttribute('data-action');
+    if (!action) return;
+    if (action === 'home') location.href = '/';
+    if (action === 'projets') location.href = '/projets';
+    if (action === 'apropos') location.href = '/a-propos';
+    if (action === 'contact') location.href = '/contact';
+    if (action === 'theme') document.getElementById('theme-toggle')?.dispatchEvent(new Event('click'));
+    if (action === 'email') navigator.clipboard?.writeText('example@example.com');
+    closePalette();
+  });
+  input?.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    document.querySelectorAll('#cmdk-list [data-action]')?.forEach((el) => {
+      const text = el.textContent?.toLowerCase() ?? '';
+      el.toggleAttribute('hidden', !text.includes(q));
+    });
+  });
+</script>
+
+
+

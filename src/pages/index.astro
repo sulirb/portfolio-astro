@@ -3,11 +3,12 @@ import PortfolioLayout from "../layouts/PortfolioLayout.astro";
 import Hero from "../components/Hero.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../data/projects";
+import CommandPalette from "../components/CommandPalette.astro";
 ---
 <PortfolioLayout title="Portfolio" pageTitle="Accueil" description="Portfolio moderne construit avec Astro">
   <Hero />
 
-  <section class="fade-in" style="display:grid; gap:1rem;">
+  <section class="fade-in" style="display:grid; gap:1rem; margin-bottom: 2rem;">
     <h2 style="margin:0">Projets récents</h2>
     <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
       {projects.slice(0,6).map(p => (
@@ -16,6 +17,7 @@ import { projects } from "../data/projects";
     </div>
   </section>
 </PortfolioLayout>
+<CommandPalette slot="overlays" />
 
 
 

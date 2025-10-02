@@ -1,5 +1,6 @@
 ---
 import PortfolioLayout from "../layouts/PortfolioLayout.astro";
+import CommandPalette from "../components/CommandPalette.astro";
 ---
 <PortfolioLayout title="Portfolio" pageTitle="À propos" description="En savoir plus sur moi">
   <section class="fade-in" style="display:grid; gap:1rem; max-width: 70ch;">
@@ -14,6 +15,7 @@ import PortfolioLayout from "../layouts/PortfolioLayout.astro";
     </div>
   </section>
 </PortfolioLayout>
+<CommandPalette slot="overlays" />
 
 
 

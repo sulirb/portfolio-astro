@@ -1,7 +1,15 @@
 ---
-const { heading = "Bonjour, je suis Votre Nom", subheading = "Développeur web · Frontend & Astro", ctaPrimary = { href: '/projets', label: 'Voir mes projets' }, ctaSecondary = { href: '/a-propos', label: 'En savoir plus' } } = Astro.props;
+const { heading = "Bonjour, je suis Votre Nom", subheading = "Développeur web · Frontend & Astro", ctaPrimary = { href: '/projets', label: 'Voir mes projets' }, ctaSecondary = { href: 'https://calendly.com/your-handle/30min', label: 'Planifier un appel' } } = Astro.props;
 ---
-<section class="hero fade-in" style="padding: 3.5rem 0; display:grid; gap:1.2rem;">
+<section class="hero fade-in" style="padding: 3.5rem 0; display:grid; gap:1.2rem; position:relative; overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute; inset:-20%; background:
+    radial-gradient(40% 35% at 20% 20%, color-mix(in oklab, var(--primary) 25%, transparent) 0%, transparent 70%),
+    radial-gradient(35% 30% at 80% 30%, color-mix(in oklab, var(--accent) 22%, transparent) 0%, transparent 70%),
+    radial-gradient(50% 45% at 50% 100%, color-mix(in oklab, var(--primary) 18%, transparent) 0%, transparent 70%);
+    filter: blur(40px) saturate(130%);
+    opacity: .25;
+    pointer-events:none;
+  "></div>
   <h1 style="font-size: clamp(2rem, 4vw, 3rem); line-height:1.15; margin:0;">
     {heading}
   </h1>

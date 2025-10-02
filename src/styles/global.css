@@ -106,6 +106,24 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Focus states accessibles */
+:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--primary) 80%, white 20%);
+  outline-offset: 3px;
+  border-radius: 0.4rem;
+}
+
+/* Blur-up images */
+img.blur-up {
+  filter: blur(12px);
+  transform: scale(1.02);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+img.blur-up.loaded {
+  filter: blur(0);
+  transform: scale(1);
+}
+
 header.navbar {
   position: sticky;
   top: 0;
@@ -141,3 +159,58 @@ footer {
   }
 }
 
+/* Background variants (fixed overlay) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+[data-bg="gradient"] body::before {
+  background: radial-gradient(
+      40% 35% at 20% 20%,
+      color-mix(in oklab, var(--primary) 22%, transparent) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      35% 30% at 80% 30%,
+      color-mix(in oklab, var(--accent) 18%, transparent) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 45% at 50% 100%,
+      color-mix(in oklab, var(--primary) 14%, transparent) 0%,
+      transparent 70%
+    );
+  filter: blur(60px) saturate(120%);
+}
+
+[data-bg="typography"] body::before {
+  background-image: radial-gradient(
+      circle at 16px 16px,
+      color-mix(in oklab, var(--border) 65%, transparent) 2px,
+      transparent 3px
+    ),
+    linear-gradient(
+      0deg,
+      color-mix(in oklab, var(--border) 25%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--border) 25%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px, 32px 32px, 32px 32px;
+  background-position: 0 0, 0 0, 0 0;
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-bg="gradient"] body::before {
+    filter: none;
+  }
+}

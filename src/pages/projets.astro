@@ -1,19 +1,48 @@
 ---
 import PortfolioLayout from "../layouts/PortfolioLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import ProjectFilters from "../components/ProjectFilters.astro";
 import { projects } from "../data/projects";
+import CommandPalette from "../components/CommandPalette.astro";
 ---
 <PortfolioLayout title="Portfolio" pageTitle="Projets" description="Tous les projets et études de cas">
   <section class="fade-in" style="display:grid; gap:1rem;">
     <h1 style="margin:0">Projets</h1>
     <p class="muted" style="margin:0">Une sélection de travaux récents et d'études de cas.</p>
-    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+    <ProjectFilters tags={[...new Set(projects.flatMap(p => p.tags))]} />
+    <div id="projects-grid" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
       {projects.map(p => (
-        <ProjectCard project={p} />
+        <div class="project-item" data-title={p.title.toLowerCase()} data-tags={p.tags.join(',')}>
+          <ProjectCard project={p} />
+        </div>
       ))}
     </div>
   </section>
 </PortfolioLayout>
+<CommandPalette slot="overlays" />
+
+<script is:inline>
+  const grid = document.getElementById('projects-grid');
+  function applyFilters({ q, tag, sort }) {
+    const items = Array.from(grid?.querySelectorAll('.project-item') ?? []);
+    for (const el of items) {
+      const title = el.getAttribute('data-title') ?? '';
+      const tags = (el.getAttribute('data-tags') ?? '').split(',');
+      const matchQ = !q || title.includes(q);
+      const matchTag = !tag || tags.includes(tag);
+      el.toggleAttribute('hidden', !(matchQ && matchTag));
+    }
+    const visible = items.filter(el => !el.hasAttribute('hidden'));
+    visible.sort((a,b) => {
+      const at = a.getAttribute('data-title') ?? '';
+      const bt = b.getAttribute('data-title') ?? '';
+      return sort === 'title-desc' ? bt.localeCompare(at) : at.localeCompare(bt);
+    });
+    visible.forEach(el => grid?.appendChild(el));
+  }
+  // @ts-ignore
+  window.projectFilters?.addEventListener('change', (e) => applyFilters(e.detail));
+</script>
 
 
 

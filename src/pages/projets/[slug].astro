@@ -1,0 +1,38 @@
+---
+import PortfolioLayout from "../../layouts/PortfolioLayout.astro";
+import { projects } from "../../data/projects";
+
+export async function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+---
+<PortfolioLayout title="Portfolio" pageTitle={project.title} description={project.description}>
+  <article class="fade-in" style="display:grid; gap:1rem;">
+    <header style="display:grid; gap:.5rem;">
+      <h1 style="margin:0">{project.title}</h1>
+      <p class="muted" style="margin:0">{project.description}</p>
+      <div style="display:flex; gap:.4rem; flex-wrap: wrap;">
+        {project.tags.map((t) => (
+          <span class="surface" style="padding:.25rem .5rem; border-radius:.5rem; font-size:.85rem;">{t}</span>
+        ))}
+      </div>
+    </header>
+
+    {project.image && (
+      <img src={project.image} alt={project.title} style="width:100%; border-radius:.9rem; border:1px solid var(--border);" loading="lazy" class="blur-up" onload="this.classList.add('loaded')" />
+    )}
+
+    <section class="surface" style="padding:1rem; display:grid; gap:.5rem;">
+      <h2 style="margin:.2rem 0">Étude de cas</h2>
+      <p>{project.content ?? 'Description détaillée prochainement.'}</p>
+      <div style="display:flex; gap:.5rem;">
+        {project.repo && (<a href={project.repo} class="btn btn-ghost">Code</a>)}
+      </div>
+    </section>
+  </article>
+</PortfolioLayout>
+
+
+
