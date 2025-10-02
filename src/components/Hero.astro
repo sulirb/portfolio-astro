@@ -1,0 +1,18 @@
+---
+const { heading = "Bonjour, je suis Votre Nom", subheading = "Développeur web · Frontend & Astro", ctaPrimary = { href: '/projets', label: 'Voir mes projets' }, ctaSecondary = { href: '/a-propos', label: 'En savoir plus' } } = Astro.props;
+---
+<section class="hero fade-in" style="padding: 3.5rem 0; display:grid; gap:1.2rem;">
+  <h1 style="font-size: clamp(2rem, 4vw, 3rem); line-height:1.15; margin:0;">
+    {heading}
+  </h1>
+  <p class="muted" style="margin:0; max-width: 60ch;">
+    {subheading}
+  </p>
+  <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.4rem;">
+    <a href={ctaPrimary.href} class="btn btn-primary">{ctaPrimary.label}</a>
+    <a href={ctaSecondary.href} class="btn">{ctaSecondary.label}</a>
+  </div>
+</section>
+
+
+

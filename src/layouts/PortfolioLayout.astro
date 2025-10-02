@@ -1,0 +1,58 @@
+---
+const { title = "Portfolio", description = "", pageTitle = undefined } = Astro.props;
+import "../styles/global.css";
+---
+<!doctype html>
+<html lang="fr" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{pageTitle ? `${pageTitle} · ${title}` : title}</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding: .8rem 1rem;">
+        <a href="/" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;">
+          <img src="/favicon.svg" width="24" height="24" alt="Logo" />
+          <strong style="color:var(--text)">Osiris</strong>
+        </a>
+        <nav style="display:flex;gap:.6rem;align-items:center;">
+          <a class="btn btn-ghost" href="/projets">Projets</a>
+          <a class="btn btn-ghost" href="/a-propos">À propos</a>
+          <a class="btn btn-ghost" href="/contact">Contact</a>
+          <button id="theme-toggle" class="btn" aria-label="Basculer le thème">Thème</button>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer>
+      <div class="container" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+        <span class="muted">© {new Date().getFullYear()} Osiris. Tous droits réservés.</span>
+        <div style="display:flex;gap:.75rem">
+          <a href="https://github.com/" target="_blank" rel="noreferrer" class="muted">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="muted">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <script is:inline>
+      const root = document.documentElement;
+      const stored = localStorage.getItem('theme');
+      if (stored) root.setAttribute('data-theme', stored);
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    </script>
+  </body>
+</html>
+
+

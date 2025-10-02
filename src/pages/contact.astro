@@ -1,0 +1,27 @@
+---
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
+---
+<PortfolioLayout title="Portfolio" pageTitle="Contact" description="Entrer en contact">
+  <section class="fade-in" style="display:grid; gap:1rem; max-width: 70ch;">
+    <h1 style="margin:0">Contact</h1>
+    <p class="muted">Envoyez-moi un message, je réponds rapidement.</p>
+    <form class="card" style="padding:1rem; display:grid; gap:.8rem;" action="mailto:example@example.com" method="post">
+      <label>
+        Nom
+        <input name="name" required style="width:100%; padding:.7rem; background:var(--bg-elev); border:1px solid var(--border); border-radius:.6rem; color:var(--text)" />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required style="width:100%; padding:.7rem; background:var(--bg-elev); border:1px solid var(--border); border-radius:.6rem; color:var(--text)" />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" required style="width:100%; padding:.7rem; background:var(--bg-elev); border:1px solid var(--border); border-radius:.6rem; color:var(--text)"></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">Envoyer</button>
+    </form>
+  </section>
+</PortfolioLayout>
+
+
+
