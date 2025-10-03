@@ -4,49 +4,47 @@ export interface Project {
   description: string;
   tags: string[];
   image?: string;
+  details?: string;
   link?: string;
-  repo?: string;
   content?: string; // texte pour l'étude de cas
   featured?: boolean;
 }
 
 export const projects: Project[] = [
   {
-    slug: "analytics-dashboard",
-    title: "Tableau de bord Analytics",
+    slug: "foot-resultats",
+    title: "Foot Résultats",
     description:
-      "Dashboard réactif avec charts et dark mode, construit avec Astro.",
-    tags: ["Astro", "Charts", "SSR"],
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-    link: "/projets/analytics-dashboard",
-    repo: "#",
+      "Foot Résultats est une plateforme pour suivre en temps réel les matchs de football des plus grandes ligues mondiales.",
+    tags: ["Next.js", "API", "Tailwind"],
+    image: "/images/footresultats.png",
+    details: "/projets/foot-resultats",
+    link: "https://footresultats.com/",
     featured: true,
     content:
-      "Objectif: centraliser des métriques clés. Rôle: intégration frontend, optimisation LCP < 1s. Résultats: -35% temps de chargement, +22% rétention.",
+      "Création d'un site web de résultats sportifs en utilisant Next.js et Tailwind CSS. Utilisation de l'API Highlightly pour récupérer les résultats en temps réel. Gestion et maintenance du site web. Optimisation globale du site web, sur les performances et sur le SEO.",
+  },
+  {
+    slug: "equipement-velo",
+    title: "Équipement Vélo",
+    description: "Landing page moderne avec Hero, pricing et CTA.",
+    tags: ["Next.js", "MongoDB", "Express", "Sass", "Node JS"],
+    image: "/images/equipementvelo.png",
+    details: "/projets/equipement-velo",
+    link: "https://equipement-velo.fr/",
+    content:
+      "Création du site web en utilisant en utilisant la MERN stack (MongoDB, Express, React, Node JS) et Next.js Gestion et maintenance du site web. Optimisation globale du site web, sur les performances et sur le SEO.",
   },
   {
     slug: "saas-landing",
-    title: "Site vitrine SaaS",
-    description: "Landing page moderne avec Hero, pricing et CTA.",
-    tags: ["Astro", "Tailwind-free", "UI"],
-    image:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
-    link: "/projets/saas-landing",
-    repo: "#",
+    title: "Saas Landing",
+    description:
+      "Template pour un SaaS, avec gestion de l'autentification et des payments.",
+    tags: ["Next.js", "Node JS", "Tailwind", "MySQL"],
+    image: "/images/grocerylistpro.png",
+    details: "/projets/saas-landing",
+    link: "https://github.com/sulirb/SAAS-template",
     content:
-      "Refonte orientée conversion. A/B test des sections, accessibilité AA, +18% CTR sur le CTA principal.",
-  },
-  {
-    slug: "portfolio-minimal",
-    title: "Portfolio minimal",
-    description: "Modèle rapide pour présenter des projets et un profil.",
-    tags: ["Astro", "Minimal", "Responsive"],
-    image:
-      "https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200&auto=format&fit=crop",
-    link: "/projets/portfolio-minimal",
-    repo: "#",
-    content:
-      "Architecture épurée, dark/light mode, pages statiques rapides, base pour itérations futures.",
+      "Création d'une solution clé en main pour démarrer un SaaS (Service as a Software) avec gestion de l'autentification et des payments. Utilisation de la combinaison Next.js/Tailwind afin de créer de manière efficiente, un design responsive et moderne. Création d'une API Rest avec Node.js et Express, pouvant être relié à une base de données MySQL.",
   },
 ];

@@ -21,7 +21,7 @@ const { project } = Astro.props;
     </header>
 
     {project.image && (
-      <img src={project.image} alt={project.title} style="width:100%; border-radius:.9rem; border:1px solid var(--border);" loading="lazy" class="blur-up" onload="this.classList.add('loaded')" />
+      <img src={project.image} alt={project.title} style="width:100%; border-radius:.9rem; border:1px solid var(--border);" loading="lazy" class="blur-up" />
     )}
 
     <section class="surface" style="padding:1rem; display:grid; gap:.5rem;">

@@ -70,6 +70,19 @@ import "../styles/global.css";
         root.setAttribute('data-bg', next);
         localStorage.setItem('bg-variant', next);
       });
+
+      // Blur-up images: marquer loaded au chargement ou si déjà en cache
+      const markLoaded = (img) => img.classList.add('loaded');
+      const imgs = Array.from(document.querySelectorAll('img.blur-up'));
+      imgs.forEach((img) => {
+        if (img.complete) {
+          // déjà en cache
+          markLoaded(img);
+        } else {
+          img.addEventListener('load', () => markLoaded(img), { once: true });
+          img.addEventListener('error', () => img.classList.remove('blur-up'), { once: true });
+        }
+      });
     </script>
   </body>
 </html>

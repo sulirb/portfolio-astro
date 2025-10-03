@@ -5,15 +5,15 @@ interface Project {
   description: string;
   tags: string[];
   image?: string;
-  link?: string;
-  repo?: string;
+   details?: string;
+   link?: string;
   content?: string;
 }
 const { project }: { project: Project } = Astro.props;
 ---
 <article class="card" style="display:grid; grid-template-rows: auto 1fr auto; position: relative;">
   {project.image && (
-    <img src={project.image} alt={project.title} style="width:100%; aspect-ratio: 16/9; object-fit: cover;" loading="lazy" class="blur-up" onload="this.classList.add('loaded')" />
+    <img src={project.image} alt={project.title} style="width:100%; aspect-ratio: 16/9; object-fit: cover;" loading="lazy" class="blur-up" />
   )}
   {project.featured && (
     <span class="surface" style="position:absolute; top:.6rem; left:.6rem; padding:.25rem .5rem; border-radius:.5rem; font-size:.8rem;">En vedette</span>
@@ -28,8 +28,8 @@ const { project }: { project: Project } = Astro.props;
     </div>
   </div>
   <div style="padding: 0 1rem 1rem; display:flex; gap:.5rem;">
-    {project.link && (<a href={project.link} class="btn">Détails</a>)}
-    {project.repo && (<a href={project.repo} class="btn btn-ghost">Code</a>)}
+    {project.details && (<a href={project.details} class="btn">Détails</a>)}
+    {project.link && (<a href={project.link} class="btn btn-ghost">Lien</a>)}
   </div>
 </article>
 
