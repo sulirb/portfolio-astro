@@ -15,7 +15,7 @@ export const projects: Project[] = [
     slug: "foot-resultats",
     title: "Foot Résultats",
     description:
-      "Foot Résultats est une plateforme pour suivre en temps réel les matchs de football des plus grandes ligues mondiales.",
+      "Foot Résultats est une plateforme pour suivre en temps réel les matchs de football des plus grandes ligues européennes et mondiales.",
     tags: ["Next.js", "API", "Tailwind"],
     image: "/images/footresultats.png",
     details: "/projets/foot-resultats",
@@ -27,7 +27,8 @@ export const projects: Project[] = [
   {
     slug: "equipement-velo",
     title: "Équipement Vélo",
-    description: "Landing page moderne avec Hero, pricing et CTA.",
+    description:
+      "Découvrez les meilleurs conseils pour choisir vos équipements de vélo adaptés à votre style et à vos besoins.",
     tags: ["Next.js", "MongoDB", "Express", "Sass", "Node JS"],
     image: "/images/equipementvelo.png",
     details: "/projets/equipement-velo",
@@ -39,7 +40,7 @@ export const projects: Project[] = [
     slug: "saas-landing",
     title: "Saas Landing",
     description:
-      "Template pour un SaaS, avec gestion de l'autentification et des payments.",
+      "Un SaaS clé en main en open-source, avec landing page,gestion de l'authentification avec Node et MySQL et des paiements avec Stripe.",
     tags: ["Next.js", "Node JS", "Tailwind", "MySQL"],
     image: "/images/grocerylistpro.png",
     details: "/projets/saas-landing",
