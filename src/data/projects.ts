@@ -32,7 +32,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "MongoDB", "Express", "Sass", "Node JS"],
     image: "/images/equipementvelo.png",
     details: "/projets/equipement-velo",
-    link: "https://equipement-velo.fr/",
+    link: "https://www.equipement-velo.fr/",
     content:
       "Création du site web en utilisant en utilisant la MERN stack (MongoDB, Express, React, Node JS) et Next.js Gestion et maintenance du site web. Optimisation globale du site web, sur les performances et sur le SEO.",
   },
