@@ -3,26 +3,108 @@ import PortfolioLayout from "../layouts/PortfolioLayout.astro";
 import CommandPalette from "../components/CommandPalette.astro";
 ---
 <PortfolioLayout title="Portfolio" pageTitle="À propos" description="En savoir plus sur moi">
-  <section class="fade-in" style="display:grid; gap:1rem; max-width: 70ch;">
-    <h1 style="margin:0">À propos</h1>
-    <p class="muted">Développeur web spécialisé en Next.js et React, je conçois des interfaces performantes et centrées sur l'utilisateur. Diplômé d'un Bac+2 en développement web, je poursuis depuis deux ans mon apprentissage à travers des projets personnels et collaboratifs qui me permettent de rester à jour sur les technologies modernes du web.</p>
-    <p class="muted">Curieux et méthodique, j'accorde une attention particulière à la structure du code, à la performance et à l'expérience utilisateur. J'ai également des notions solides en Node.js, MongoDB et MySQL, me permettant d'intervenir sur l'ensemble de la chaîne de développement, du front-end au back-end.</p>
-    <p class="muted">Mon objectif : créer des applications web intuitives, efficaces et durables, tout en continuant à perfectionner mes compétences dans un environnement stimulant et innovant.</p>
-    <div class="surface" style="padding:1rem;">
-<ul>
-  <li>Next.js, React, TypeScript</li>
-  <li>Node.js, MongoDB, MySQL</li>
-  <li>Performance web et accessibilité</li>
-  <li>Architecture front-end et bonnes pratiques de code</li>
-  <li>Design orienté utilisateur (UX)</li>
-  <li>Composants réutilisables et design system</li>
-  <li>Veille technologique et apprentissage continu</li>
-</ul>
-
+  <h1 style="padding:0 1rem">À propos</h1>
+  <section class="about-grid">
+    <div class="about-text">
+      <p class="muted">Développeur web spécialisé en Next.js et React, je conçois des interfaces performantes et centrées sur l'utilisateur. Diplômé d'un Bac+2 en développement web, je poursuis depuis deux ans mon apprentissage à travers des projets personnels et collaboratifs qui me permettent de rester à jour sur les technologies modernes du web.</p>
+      <p class="muted">Curieux et méthodique, j'accorde une attention particulière à la structure du code, à la performance et à l'expérience utilisateur. J'ai également des notions solides en Node.js, MongoDB et MySQL, me permettant d'intervenir sur l'ensemble de la chaîne de développement, du front-end au back-end.</p>
+      <p class="muted">Mon objectif : créer des applications web intuitives, efficaces et durables, tout en continuant à perfectionner mes compétences dans un environnement stimulant et innovant.</p>
+      <div class="surface" style="padding:1rem;">
+        <ul>
+          <li>Next.js, React, TypeScript</li>
+          <li>Node.js, MongoDB, MySQL</li>
+          <li>Performance web et accessibilité</li>
+          <li>Architecture front-end et bonnes pratiques de code</li>
+          <li>Design orienté utilisateur (UX)</li>
+          <li>Composants réutilisables et design system</li>
+          <li>Veille technologique et apprentissage continu</li>
+        </ul>
+      </div>
     </div>
+
+    <aside class="about-photo" aria-label="Placeholder photo — ta photo ici">
+      <!-- Remplace l'image par ta photo : <img src="/chemin/vers/ta-photo.jpg" alt="Photo de moi" /> -->
+      <div class="photo-wrapper">
+        <img src="/images/profil.png" alt="Photo" />
+      </div>
+    </aside>
   </section>
 </PortfolioLayout>
 <CommandPalette slot="overlays" />
+
+<style>
+.about-grid {
+  display: grid;
+  /* garde le texte à gauche et donne plus d'espace à la photo */
+  grid-template-columns: 1fr min(480px, 45%);
+  gap: 1.25rem;
+  align-items: start;
+  /* augmente la largeur maximale pour utiliser plus d'espace écran */
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Permet au texte de se réduire proprement quand l'espace est limité */
+.about-text { min-width: 0; }
+
+/* Conteneur de la photo */
+.about-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+
+}
+
+/* Cadre + ratio + overflow pour garder de belles proportions */
+.photo-wrapper {
+  width: 100%;
+  max-width: 250px; /* augmente la taille max de l'image */
+  aspect-ratio: 4 / 5;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(135deg,#f6f7f8,#eaeef2);
+  box-shadow: 0 6px 18px rgba(20,20,30,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* L'image couvre tout et reste responsive */
+.photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive: empile et centre la photo sur petits écrans */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  /* place la photo au-dessus du texte */
+  .about-photo {
+    order: -1;
+    padding: 0.75rem 0 0;
+    width: 100%;
+  }
+  .photo-wrapper {
+    max-width: 200px;
+    margin: 0.75rem auto 1rem;
+    aspect-ratio: 3 / 4;
+  }
+  .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* Optionnel : sur très grands écrans, laisse la photo grandir un peu */
+@media (min-width: 1400px) {
+  .about-grid { max-width: 1300px; }
+  .photo-wrapper { max-width: 300px; }
+}
+</style>
 
 
 
