@@ -51,10 +51,10 @@ export const projects: Project[] = [
 
   {
     slug: "meteo-maubeuge",
-    title: "Météo-Maubeuge",
+    title: "Météo Maubeuge",
     description:
       "Manipulation de l'API Open-Meteo afin d'afficher les données météorologiques en temps réel. Création d'une expérience utilisateur informative et immersive.",
-    tags: ["JavaScript"],
+    tags: ["JavaScript", "API"],
     image: "/images/meteo.png",
     link: "https://meteo-maubeuge.vercel.app",
     content:
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     title: "Booki",
     description:
       "Intégration de maquettes en suivant un design responsive et collaboration sur GitHub pour déployer le produit en ligne.",
-    tags: ["SCSS", "Git"],
+    tags: ["SCSS"],
     image: "/images/booki.png",
     link: "https://sulirb.github.io/booki/",
     content:
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     title: "Sophie Bluel",
     description:
       "Portfolio impliquant manipulation du DOM, gestion des événements et système d'authentification avec token sécurisé en localStorage.",
-    tags: ["JavaScript", "Frontend"],
+    tags: ["JavaScript"],
     image: "/images/bluel.png",
     link: "https://sulirb.github.io/Portfolio--P3/FrontEnd",
     content:
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     title: "Mon vieux Grimoire",
     description:
       "Backend Express connecté à MongoDB pour gérer un site de notation de livres (CRUD, authentification, gestion des ressources).",
-    tags: ["Express", "MongoDB"],
+    tags: ["Node.js", "Express", "MongoDB"],
     image: "/images/grimoire.png",
     link: "https://github.com/sulirb/mon-vieux-grimoire-p7",
     content:
