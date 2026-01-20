@@ -20,9 +20,21 @@ export const projects: Project[] = [
     image: "/images/footresultats.png",
     details: "/projets/foot-resultats",
     link: "https://footresultats.com/",
-    featured: true,
     content:
       "Création d'un site web de résultats sportifs en utilisant Next.js et Tailwind CSS. Utilisation de l'API Highlightly pour récupérer les résultats en temps réel. Gestion et maintenance du site web. Optimisation globale du site web, sur les performances et sur le SEO.",
+  },
+  {
+    slug: "viseox",
+    title: "Viseox",
+    description:
+      "Viseox est un comparateur de produits alimentaires qui aide les consommateurs à faire des choix éclairés en matière de nutrition.",
+    tags: ["Next.js", "TypeScript", "Tailwind", "API"],
+    image: "/images/viseox.png",
+    details: "/projets/viseox",
+    link: "https://viseox.net/",
+    featured: true,
+    content:
+      "Développement d'un comparateur de produits alimentaires avec Next.js et TypeScript. Intégration de l'API OpenFoodFacts pour récupérer les données des produits. Conception d'une interface utilisateur intuitive avec Tailwind CSS. Optimisation des performances et du SEO pour une meilleure visibilité en ligne.",
   },
   {
     slug: "equipement-velo",
